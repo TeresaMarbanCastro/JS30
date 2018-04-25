@@ -48,7 +48,7 @@ body{
 .hour-hand{
     background-color: white; 
     /* transform-origin-x: 100%; */
-    width : 50px;
+    /* width : 50px; */
 }
 .min-hand{
     background-color: grey;   
