@@ -1,0 +1,32 @@
+html {
+  color: #3c5566;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #888888;
+  font-size: 40px;
+  letter-spacing: 2px;
+  text-align: right;
+  text-shadow: 0px 0px 1px rgba(111, 111, 111, 1);
+}
+
+.button {
+  background-color: #ddd;
+  border-radius: 5%;
+  border: 1px solid  #888888;
+  display: inline-block;
+  height: 22px;
+  width: 85px;
+  margin-left: 10px;
+  margin-right: 25px;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: #888888;
+  box-shadow: 0px 0px 1px 1px rgb(68, 68, 67);
+}
