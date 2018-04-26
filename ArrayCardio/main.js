@@ -121,14 +121,22 @@ console.log(yearsLived);
 
 
 //7. SORT people alphabetically by last name
-const alphabeticallyOrdered = people.sort(function(lastPerson, nextPerson){
-    const parts = lastPerson.split(', '); //to get an array
-    console.log(parts);
-const [last, first] = lastPerson.split(', '); //to get variables with both
-console.log(last, first);
-const [alast, afirst] = lastPerson.split(', '); //to get variables with both
-const [blast, bfirst] = nextPerson.split(', ');
-return alast > blast ? 1 : -1;
+// const alphabeticallyOrdered = people.sort(function(lastPerson, nextPerson){
+//     const parts = lastPerson.split(', '); //to get an array
+//     console.log(parts);
+// const [last, first] = lastPerson.split(', '); //to get variables with both
+// console.log(last, first);
+// const [alast, afirst] = lastPerson.split(', '); //to get variables with both
+// const [blast, bfirst] = nextPerson.split(', ');
+// return alast > blast ? 1 : -1;
+// });
+// console.log(alphabeticallyOrdered);
+
+//Another way
+const alphabeticallyOrdered = people.sort((personA,personB)=>{
+    const personALastName = personA.split(', ')[0];
+    const personBLastName = personB.split(', ')[0];
+    return personALastName > personBLastName ? 1 : -1;
 });
 console.log(alphabeticallyOrdered);
 
