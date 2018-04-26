@@ -151,7 +151,7 @@ console.log(orderedNames);
 //8. REDUCE exercise: Sum up the instances of each of these:
 const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
 const instances = data.reduce(function(accumulator, item){
-   if(!accumulator[item]){  //!accumulator.hasOwnProperty(item)  
+   if(!accumulator[item]){  //!accumulator.hasOwnProperty(item) 
     accumulator[item]= 0;
    }
    accumulator[item]++
