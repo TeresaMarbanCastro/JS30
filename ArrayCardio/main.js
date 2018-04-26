@@ -140,13 +140,24 @@ const alphabeticallyOrdered = people.sort((personA,personB)=>{
 });
 console.log(alphabeticallyOrdered);
 
+//Para nombres tamibién
+var orderedNames = alphabeticallyOrdered.sort((personA, personB) =>{
+	const personAFirstName = personA.split(', ')[0];
+	const personBFirstName = personB.split(', ')[0];
+	return personAFirstName > personBFirstName ? 1 : -1;
+});
+console.log(orderedNames);
+
 //8. REDUCE exercise: Sum up the instances of each of these:
 const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
-const instances = data.reduce(function(obj, item){
-   if(!obj[item]){
-    obj[item]= 0;
+const instances = data.reduce(function(accumulator, item){
+   if(!accumulator[item]){  //!accumulator.hasOwnProperty(item)  
+    accumulator[item]= 0;
    }
-   obj[item]++
-   return obj;
+   accumulator[item]++
+   return accumulator;
 }, {});
 console.log(instances);
+
+//El corchete sirve para acceder a la propiedad variable del array convirtiéndolo en objeto. : property accessor.
+//Se crea un objeto vacío y en cada loop del reduce va creando una propiedad con el item y accede a ella con el corchete. 
