@@ -569,9 +569,9 @@ describe("the JavaScript language", function(){
                 return this.name;
             };
     
-            // var obj = new Obj();
-            // expect(obj.theName()).toEqual(undefined);//there is no return in function Obj()
-            // expect(obj.theName).toBe(new Obj().theName);
+            var obj = new Obj();
+            expect(obj.theName()).toEqual(undefined);//there is no return in function Obj()
+            expect(obj.theName).toBe(new Obj().theName); 
         });
     
         it("can define a factory", function(){
