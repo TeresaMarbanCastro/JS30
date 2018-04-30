@@ -570,7 +570,7 @@ describe("the JavaScript language", function(){
             };
     
             // var obj = new Obj();
-            // expect(obj.theName()).toEqual(undefined);
+            // expect(obj.theName()).toEqual(undefined);//there is no return in function Obj()
             // expect(obj.theName).toBe(new Obj().theName);
         });
     
@@ -681,9 +681,10 @@ describe("the JavaScript language", function(){
             });
           }
           return functions;
+          console.log(functions);
         }
-
-        expect(generate()[0]()).toEqual(5);
+      //It creates an array of functions (5 functions) whose return values are always 5 (i=5)
+        expect(generate()[0]()).toEqual(5); 
         expect(generate()[1]()).toEqual(5);
     });
 
@@ -797,7 +798,7 @@ describe("the JavaScript language", function(){
             };
             lion.hunt();
 
-            // expect(lion.energy).toEqual(3985);
+            expect(lion.energy).toEqual(4000);//it doesn't call the function, it only makes you get the result of energy defined in the new hunt. which is 4000, not 3985
         });
       });
 
