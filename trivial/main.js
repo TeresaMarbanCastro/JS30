@@ -34,21 +34,41 @@ const fullQuestionData = [
       correctAnswer: {id: 3}
     }
   ];
-//1. PRINT QUESTION
-
-  //GET QUESTION WITH IF AND SET INTERVAL
-
+//1. PRINT QUESTION and ANSWERS
+(function(){
     let i = 0;
-    let placeQuestion = document.querySelector('.question');
+    let placeQuestion = document.querySelector('.question-answer__container');
     let buttonQuestion = document.querySelector('.check__button');
   
      function getQuestion(){
       if(i < fullQuestionData.length){
-        placeQuestion.innerHTML = fullQuestionData[i].question;
+        placeQuestion.innerHTML = 
+        ` <h3>${fullQuestionData[i].question}</h3>`
+        for (const answers of fullQuestionData[i].answers) {
+            // let j = 0;
+            placeQuestion.innerHTML += 
+                `<label for="${answers.value}">${answers.value}</label>
+                <input id="${answers.value}" type="radio" name="options" />
+                `
+        }
         i++;
       }
     };
     buttonQuestion.addEventListener('click', getQuestion);
+})();
+
+// function paintQuestions() {
+//     if (i < questionsWithAnswers.length) {
+       
+//         for (const answers of questionsWithAnswers[i].answers) {
+//             questionsList.innerHTML += (
+//                 `<input type="radio" id=${answers.answerDescritpion} name="answer" value="answer">
+//                 <label for=${answers.answerDescritpion}>${answers.answerDescritpion}</label>`
+//             );
+//         }
+//         i++;
+//     }
+// }
 
 
  //CHECK ANSWER
