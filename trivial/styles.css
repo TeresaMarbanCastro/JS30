@@ -1,0 +1,35 @@
+*{
+box-sizing: border-box;
+padding: 0;
+margin: 0;
+}
+body{
+    /* background-image: url(images/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; */
+    background-color: black;
+    /* font-family: 'Pangolin', cursive; */
+    color: white;
+}
+.header__container{
+    height: 20vh;
+    text-align: center;
+    padding-top: 50px;
+}
+.header__title{
+    
+}
+.main__container{
+    font-family: 'sans-serif';
+    font-size: 1em;
+    height: 70vh;
+    padding: 100px;
+    padding-top: 0;
+}
+.check__button{
+    width: 50px;
+    height: 50px;
+}
+.footer__container{
+    height: 10vh;
+}
