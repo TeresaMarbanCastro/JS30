@@ -45,16 +45,26 @@ function isCorrect(questionId, correctAnswer, userAnswer){
   } else return false;
 }
 
+//GET QUESTION WITH SETTIMEOUT TRICK
+// (function getQuestion() {
+//   function doSetTimeout(i) {
+//     setTimeout(function () { console.log(fullQuestionData[i].question) }, i * 2000);
+//   }
+//   for (let i = 0; i < fullQuestionData.length; i++) {
+//     doSetTimeout(i);
+//   }
+// })()
 
-(function getQuestion() {
-  function doSetTimeout(i) {
-    setTimeout(function () { console.log(fullQuestionData[i].question) }, i * 2000);
-  }
-  for (let i = 0; i < fullQuestionData.length; i++) {
-    doSetTimeout(i);
-  }
+//GET QUESTION WITH IF AND SET INTERVAL
+(function getQuestion(){
+  let i = 0;
+  setInterval(function(){
+    if(i < fullQuestionData.length){
+      console.log(fullQuestionData[i].question);
+      i++;
+    }
+  }, 2000);
 })()
-
 
 
 
