@@ -33,7 +33,6 @@ const fullQuestionData = [
     }
   ];
   let buttonQuestion = document.querySelector('.check__button');
-  let checkedValue = '';
 //1. PRINT QUESTION and ANSWERS
 // (function(){
     let i = 0;
@@ -42,69 +41,45 @@ const fullQuestionData = [
 
     placeQuestion.innerHTML = `Pulsa el botón para comenzar`;
 
-     function getQuestion(){
-      if(i < fullQuestionData.length){
-        placeQuestion.innerHTML = 
-        ` <h3>${fullQuestionData[i].question}</h3>`
-        for (const answers of fullQuestionData[i].answers) {
+     function printQuestion(){
+        if(i < fullQuestionData.length){
+          placeQuestion.innerHTML = 
+          ` <h3 class="question__class" id="${fullQuestionData[i].questionId}">${fullQuestionData[i].question}${fullQuestionData[i].questionId}</h3>`
+          for (const answers of fullQuestionData[i].answers) {
             placeQuestion.innerHTML += 
                 `<label for="${answers.id}">${answers.value}</label>
                 <input id="${answers.id}" type="radio" value="${answers.value}" name="options" class="input__class" />
                 `    
-        }
+          }
         i++;
       }
     };
-  let selectedAnswer = '';
+
+
     function getSelectedAnswer(){
       let radios = document.querySelectorAll('.input__class');
-      // console.log(radios);
+      let questionTitleID =  document.querySelector('.question__class').id;
+      console.log(questionTitleID);
       for (let i = 0; i < radios.length; i++){
-        // console.log(radios[i].checked);
-         selectedAnswer = radios[i];
-        if (selectedAnswer.checked === true){
-        console.log(selectedAnswer.id);
-        } 
+        if (radios[i].checked){
+          let selectedAnswerID = radios[i].id;
+          console.log(selectedAnswerID);
+          if(selectedAnswerID === questionTitleID){
+            console.log('bien');
+          }
+        }
+  
       }
     }
-    let correctAnswer = '';
 
-    function checkAnswer(selectedAnswer, correctAnswer){
-      for (let j = 0; j < fullQuestionData.length; j++) {
-        correctAnswer = fullQuestionData[j].correctAnswer;
-           console.log(correctAnswer.id);
-      }
-    }
+    
     buttonQuestion.addEventListener('click', getSelectedAnswer);
-    buttonQuestion.addEventListener('click', checkAnswer);
-    buttonQuestion.addEventListener('click', getQuestion);
+    // buttonQuestion.addEventListener('click', checkAnswer);
+    buttonQuestion.addEventListener('click', printQuestion);
     
 
 // })();
     
- //CHECK ANSWER
-
-//  let correctAnswer = fullQuestionData[0].correctAnswer.id;
-//  let questionId = fullQuestionData[0].questionId;
-// //  let selectedAnswer = input.checked;
-
-//  function checkAnswer(questionId, correctAnswer, selectedAnswer){
-//      choices = document.getElementsByName("options");
-//      for(let j = 0; j < choices.length; j++){
-//          if(choices[j].checked){
-//              choice = choices[j].value;
-//          }
-//      }
-//      questionId = 0;
-//    if (correctAnswer === selectedAnswer){
-//      return true;
-//    } else return false;
-//  }
-//  buttonQuestion.addEventListener('click', checkAnswer);
-
-
-
-
   //SCOREBOARD
   function recalculateCorrectScore(points, time){
     if (time <= 2){
@@ -114,15 +89,15 @@ const fullQuestionData = [
     } if (time > 10){
       return points;
     } 
-  }
+  };
   function recalculateFailedScore(points, time){
       if( time <= 10){
         return points - 1;
       } if ( time > 10){
         return points -2;
       } 
-  }
+  };
   function recalculateBlankScore(points){
       return points -3;
-  }
+  };
   
