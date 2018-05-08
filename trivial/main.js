@@ -6,7 +6,7 @@ const fullQuestionData = [
       answers: [
         {id: 1, value: 'Lusaka'},
         {id: 2, value: 'Madrid'},
-        {id: 1, value: 'Harare'}
+        {id: 3, value: 'Harare'}
       ],
       correctAnswer: {id: 1}
     },
@@ -17,11 +17,9 @@ const fullQuestionData = [
       answers: [
         {id: 1, value: 18},
         {id: 2, value: 'No lo sabe ni ella'},
-        {id: 1, value: 103}
+        {id: 3, value: 103}
       ],
-      correctAnswer: { 
-        id: 2
-      }
+      correctAnswer: { id: 2 }
     },
     {
       questionId: 3,
@@ -29,71 +27,84 @@ const fullQuestionData = [
       answers: [
         {id: 1, value: 'Adolf'},
         {id: 2, value: 'Sefarad'},
-        {id: 1, value: 'Sigmund'}
+        {id: 3, value: 'Sigmund'}
       ],
       correctAnswer: {id: 3}
     }
   ];
   let buttonQuestion = document.querySelector('.check__button');
-
+  let checkedValue = '';
 //1. PRINT QUESTION and ANSWERS
-(function(){
+// (function(){
     let i = 0;
     let placeQuestion = document.querySelector('.question-answer__container');
     // let buttonQuestion = document.querySelector('.check__button');
+
     placeQuestion.innerHTML = `Pulsa el botón para comenzar`;
+
      function getQuestion(){
       if(i < fullQuestionData.length){
         placeQuestion.innerHTML = 
         ` <h3>${fullQuestionData[i].question}</h3>`
         for (const answers of fullQuestionData[i].answers) {
-            // let j = 0;
             placeQuestion.innerHTML += 
-                `<label for="${answers.value}">${answers.value}</label>
-                <input id="${answers.value}" type="radio" name="options" />
-                `
+                `<label for="${answers.id}">${answers.value}</label>
+                <input id="${answers.id}" type="radio" value="${answers.value}" name="options" class="input__class" />
+                `    
         }
         i++;
       }
     };
-    buttonQuestion.addEventListener('click', getQuestion);
+  let selectedAnswer = '';
+    function getSelectedAnswer(){
+      let radios = document.querySelectorAll('.input__class');
+      // console.log(radios);
+      for (let i = 0; i < radios.length; i++){
+        // console.log(radios[i].checked);
+         selectedAnswer = radios[i];
+        if (selectedAnswer.checked === true){
+        console.log(selectedAnswer.id);
+        } 
+      }
+    }
+    let correctAnswer = '';
 
+    function checkAnswer(selectedAnswer, correctAnswer){
+      for (let j = 0; j < fullQuestionData.length; j++) {
+        correctAnswer = fullQuestionData[j].correctAnswer;
+           console.log(correctAnswer.id);
+      }
+    }
+    buttonQuestion.addEventListener('click', getSelectedAnswer);
+    buttonQuestion.addEventListener('click', checkAnswer);
+    buttonQuestion.addEventListener('click', getQuestion);
+    
+
+// })();
+    
  //CHECK ANSWER
 
- let correctAnswer = fullQuestionData[0].correctAnswer.id;
- let questionId = fullQuestionData[0].questionId;
- let selectedAnswer = currentTarget.event;
+//  let correctAnswer = fullQuestionData[0].correctAnswer.id;
+//  let questionId = fullQuestionData[0].questionId;
+// //  let selectedAnswer = input.checked;
 
- function checkAnswer(questionId, correctAnswer, selectedAnswer){
-     choices = document.getElementsByName("options");
-     for(let j = 0; j < choices.length; j++){
-         if(choices[j].checked){
-             choice = choices[j].value;
-         }
-     }
-     questionId = 0;
-   if (correctAnswer === selectedAnswer){
-     return true;
-   } else return false;
- }
- buttonQuestion.addEventListener('click', checkAnswer);
+//  function checkAnswer(questionId, correctAnswer, selectedAnswer){
+//      choices = document.getElementsByName("options");
+//      for(let j = 0; j < choices.length; j++){
+//          if(choices[j].checked){
+//              choice = choices[j].value;
+//          }
+//      }
+//      questionId = 0;
+//    if (correctAnswer === selectedAnswer){
+//      return true;
+//    } else return false;
+//  }
+//  buttonQuestion.addEventListener('click', checkAnswer);
 
-})();
 
-// function checkAnswer(){
-// 	choices = document.getElementsByName("choices");
-// 	for(let i=0; i<choices.length; i++){
-// 		if(choices[i].checked){
-// 			choice = choices[i].value;
-// 		}
-// 	}
-// 	if(choice == questions[pos][5]){
-// 		correct++;
-// 	}
-// 	pos++;
-// 	renderQuestion();
-//     //WORKING ON number correct right or wrong.
-// }
+
+
   //SCOREBOARD
   function recalculateCorrectScore(points, time){
     if (time <= 2){
