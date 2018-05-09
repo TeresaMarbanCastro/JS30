@@ -60,9 +60,7 @@ const fullQuestionData = [
   };
 
 //2. PRINT QUESTION and ANSWERS and CHECK USER SELECTION WITH QUESTION ID
- let i = 0;
-
-
+  let i = 0;
   function printQuestion(){
     if(i < fullQuestionData.length){
       placeQuestion.innerHTML = 
@@ -80,38 +78,33 @@ const fullQuestionData = [
   function checkAnswer(){
     let options = document.querySelectorAll('.input__class');
     let questionTitleID =  document.querySelector('.question__class').id;
-      // var found = fullQuestionData.find(function(i) {
-      //   if (question.id == i) {
-      //      return correctAnswer;
-      //   }
-      // });
+
     for (let i = 0; i < options.length; i++){
       if (options[i].checked){
         let selectedAnswerID = options[i].id;
         if(selectedAnswerID === questionTitleID){
           alert('Acertaste');
-          points += 1;
-          placeData.innerHTML = 'Teresa' + ' ' + points;
+          recalculateCorrectScore();
         }else {
           alert('Fallaste');
-          points -= 1;
-          placeData.innerHTML = 'Teresa' + ' ' + points;
+          recalculateFailedScore();
         }
         seconds = 0;
+      } else if (seconds >= 19 && options[i].checked === false) {
+        recalculateBlankScore();
       }
     }
   }
 
   buttonQuestion.addEventListener('click', checkAnswer);
   buttonQuestion.addEventListener('click', printQuestion);
-  // buttonQuestion.addEventListener('click', restartTimer);
-
 
   //3. TIMER  
   function startTimer(){
     function onGoingTimer(){
      if (seconds > 19){
        seconds = 0;
+       recalculateBlankScore();
        printQuestion();
        } else {
        seconds += 1;
@@ -123,24 +116,61 @@ const fullQuestionData = [
 
   //SCOREBOARD
  
-  function recalculateCorrectScore(points, seconds){
+  function recalculateCorrectScore(){
     if (seconds <= 2){
-      return points + 2;
-    } if (seconds > 2 && time <= 10){
-      return points + 1;
-    } if (seconds > 10){
-      return points;
+      points += 2;
+      placeData.innerHTML = 'Teresa' + ' ' + points;
+      console.log('correcta en menos de 2');
+    } else if (seconds > 2 && seconds <= 10){
+      points += 1;
+      placeData.innerHTML = 'Teresa' + ' ' + points;    
+      console.log('correcta en menos de 10');
+    } else if (seconds > 10){
+      console.log('correcta en más de 10');
     } 
   };
-  recalculateCorrectScore();
-  function recalculateFailedScore(points, time){
-      if( time <= 10){
-        return points - 1;
-      } if ( time > 10){
-        return points -2;
-      } 
+
+  function recalculateFailedScore(){
+      if (seconds <= 10){
+        points -= 1;
+        placeData.innerHTML = 'Teresa' + ' ' + points;
+        console.log('fallaste en menos de 10');
+      }else if (seconds > 10 && seconds < 20){
+        points -= 2;
+        placeData.innerHTML = 'Teresa' + ' ' + points;
+        console.log('fallaste en más de 10');
+      } else if (seconds >= 20){
+        points -= 3;
+        placeData.innerHTML = 'Teresa' + ' ' + points;
+        console.log('left blank');
+      }
   };
-  function recalculateBlankScore(points){
-      return points -3;
+
+  function recalculateBlankScore(){
+      points -= 3;
+      placeData.innerHTML = 'Teresa' + ' ' + points;
+      console.log('left blank');
   };
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      // var found = fullQuestionData.find(function(i) {
+      //   if (question.id == i) {
+      //      return correctAnswer;
+      //   }
+      // });
