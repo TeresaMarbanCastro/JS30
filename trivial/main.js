@@ -59,6 +59,7 @@ const fullQuestionData = [
     buttonQuestion.classList.remove('hide');
   };
 
+
 //2. PRINT QUESTION and ANSWERS and CHECK USER SELECTION WITH QUESTION ID
   let i = 0;
   function printQuestion(){
@@ -68,7 +69,7 @@ const fullQuestionData = [
        for (const answers of fullQuestionData[i].answers) {
           placeQuestion.innerHTML += 
           `<label for="${answers.id}">${answers.value}</label>
-           <input id="${answers.id}" type="radio" value="${answers.value}" name="options" class="input__class" />
+           <input id="${answers.id}" type="radio" value="${answers.value}" name="options" class="input__class" required />
            `    
         }
       i++;
@@ -78,7 +79,6 @@ const fullQuestionData = [
   function checkAnswer(){
     let options = document.querySelectorAll('.input__class');
     let questionTitleID =  document.querySelector('.question__class').id;
-
     for (let i = 0; i < options.length; i++){
       if (options[i].checked){
         let selectedAnswerID = options[i].id;
@@ -90,8 +90,6 @@ const fullQuestionData = [
           recalculateFailedScore();
         }
         seconds = 0;
-      } else if (seconds >= 19 && options[i].checked === false) {
-        recalculateBlankScore();
       }
     }
   }
