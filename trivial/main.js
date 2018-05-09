@@ -32,19 +32,22 @@ const fullQuestionData = [
       correctAnswer: {id: 3}
     }
   ];
-  let buttonQuestion = document.querySelector('.check__button');
-//1. PRINT QUESTION and ANSWERS
-// (function(){
+
+
+let buttonQuestion = document.querySelector('.check__button');
+
+//1. PRINT QUESTION and ANSWERS and CHECK USER SELECTION WITH QUESTION ID
+
+(function(){
     let i = 0;
     let placeQuestion = document.querySelector('.question-answer__container');
-    // let buttonQuestion = document.querySelector('.check__button');
 
     placeQuestion.innerHTML = `Pulsa el botón para comenzar`;
 
      function printQuestion(){
         if(i < fullQuestionData.length){
           placeQuestion.innerHTML = 
-          ` <h3 class="question__class" id="${fullQuestionData[i].questionId}">${fullQuestionData[i].question}${fullQuestionData[i].questionId}</h3>`
+          ` <h3 class="question__class" id="${fullQuestionData[i].questionId}">${fullQuestionData[i].questionId} ${fullQuestionData[i].question}</h3>`
           for (const answers of fullQuestionData[i].answers) {
             placeQuestion.innerHTML += 
                 `<label for="${answers.id}">${answers.value}</label>
@@ -55,30 +58,30 @@ const fullQuestionData = [
       }
     };
 
-
-    function getSelectedAnswer(){
-      let radios = document.querySelectorAll('.input__class');
+    function checkAnswer(){
+      let options = document.querySelectorAll('.input__class');
       let questionTitleID =  document.querySelector('.question__class').id;
+      var found = fullQuestionData.find(function(i) {
+        if (question.id == i) {
+           return correctAnswer;
+        }
+      });
       console.log(questionTitleID);
-      for (let i = 0; i < radios.length; i++){
-        if (radios[i].checked){
-          let selectedAnswerID = radios[i].id;
+      for (let i = 0; i < options.length; i++){
+        if (options[i].checked){
+          let selectedAnswerID = options[i].id;
           console.log(selectedAnswerID);
           if(selectedAnswerID === questionTitleID){
             console.log('bien');
-          }
+          }else console.log('mal');
         }
   
       }
     }
 
-    
-    buttonQuestion.addEventListener('click', getSelectedAnswer);
-    // buttonQuestion.addEventListener('click', checkAnswer);
+    buttonQuestion.addEventListener('click', checkAnswer);
     buttonQuestion.addEventListener('click', printQuestion);
-    
-
-// })();
+})();
     
   //SCOREBOARD
   function recalculateCorrectScore(points, time){
