@@ -47,6 +47,7 @@ body{
     border: dotted 2px grey;
     border-radius: 20%;
     padding-left: none;
+    cursor: pointer;
 }
 .check__button{
     width: 80px;
@@ -57,6 +58,7 @@ body{
     border: dotted 2px grey;
     border-radius: 20%;
     padding-left: none;
+    cursor: pointer;
 }
 .footer__container{
     height: 10vh;
