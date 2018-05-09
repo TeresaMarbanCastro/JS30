@@ -36,74 +36,93 @@ const fullQuestionData = [
 
 let buttonQuestion = document.querySelector('.check__button');
 let buttonStart = document.querySelector('.start__button');
+let placeData = document.querySelector('.scoreboard__data');
+let placeQuestion = document.querySelector('.question-answer__container');
+let timer = document.querySelector('.seconds');
+let seconds = 0;
+let points = 0;
 
-//1. PRINT QUESTION and ANSWERS and CHECK USER SELECTION WITH QUESTION ID
 
+//1. START FUNCTIONS
 (function(){
-    let i = 0;
-    let placeQuestion = document.querySelector('.question-answer__container');
+  placeData.innerHTML = 'Aquí se registrarán tus resultados';
 
-    placeQuestion.innerHTML = `Pulsa el botón para comenzar`;
-
-     function printQuestion(){
-        if(i < fullQuestionData.length){
-          placeQuestion.innerHTML = 
-          ` <h3 class="question__class" id="${fullQuestionData[i].questionId}">${fullQuestionData[i].questionId} ${fullQuestionData[i].question}</h3>`
-          for (const answers of fullQuestionData[i].answers) {
-            placeQuestion.innerHTML += 
-                `<label for="${answers.id}">${answers.value}</label>
-                <input id="${answers.id}" type="radio" value="${answers.value}" name="options" class="input__class" />
-                `    
-          }
-        i++;
-      }
-    };
-
-    function checkAnswer(){
-      let options = document.querySelectorAll('.input__class');
-      let questionTitleID =  document.querySelector('.question__class').id;
-      // var found = fullQuestionData.find(function(i) {
-      //   if (question.id == i) {
-      //      return correctAnswer;
-      //   }
-      // });
-      for (let i = 0; i < options.length; i++){
-        if (options[i].checked){
-          let selectedAnswerID = options[i].id;
-          if(selectedAnswerID === questionTitleID){
-            alert('Acertaste');
-
-          }else {
-            alert('Fallaste')
-          }
-        }
-  
-      }
-    }
-
-    buttonQuestion.addEventListener('click', checkAnswer);
-    buttonQuestion.addEventListener('click', printQuestion);
-
-
-
-    
-  //SCOREBOARD
   buttonStart.addEventListener('click', startScoreboard);
 
-    let placeData = document.querySelector('.scoreboard__data');
-
-    placeData.innerHTML = 'Aquí se registrarán tus resultados';
-
   function startScoreboard(){
-    placeData.innerHTML = 'Teresa' + '' + 0;
+    placeData.innerHTML = 'Teresa' + ' ' + points;
     printQuestion();
     hideStart();
+    startTimer();
   };
 
   function  hideStart(){
     buttonStart.classList.add('hide');
     buttonQuestion.classList.remove('hide');
   };
+
+//2. PRINT QUESTION and ANSWERS and CHECK USER SELECTION WITH QUESTION ID
+ let i = 0;
+
+  placeQuestion.innerHTML = `Pulsa el botón para comenzar`;
+
+  function printQuestion(){
+    if(i < fullQuestionData.length){
+      placeQuestion.innerHTML = 
+      ` <h3 class="question__class" id="${fullQuestionData[i].questionId}">${fullQuestionData[i].questionId} ${fullQuestionData[i].question}</h3>`
+       for (const answers of fullQuestionData[i].answers) {
+          placeQuestion.innerHTML += 
+          `<label for="${answers.id}">${answers.value}</label>
+           <input id="${answers.id}" type="radio" value="${answers.value}" name="options" class="input__class" />
+           `    
+        }
+      i++;
+    }
+  };
+
+  function checkAnswer(){
+    let options = document.querySelectorAll('.input__class');
+    let questionTitleID =  document.querySelector('.question__class').id;
+      // var found = fullQuestionData.find(function(i) {
+      //   if (question.id == i) {
+      //      return correctAnswer;
+      //   }
+      // });
+    for (let i = 0; i < options.length; i++){
+      if (options[i].checked){
+        let selectedAnswerID = options[i].id;
+        if(selectedAnswerID === questionTitleID){
+          alert('Acertaste');
+          points += 1;
+          placeData.innerHTML = points;
+        }else {
+          alert('Fallaste');
+          points -= 1;
+          placeData.innerHTML = points;
+        }
+      }
+    }
+  }
+
+  buttonQuestion.addEventListener('click', checkAnswer);
+  buttonQuestion.addEventListener('click', printQuestion);
+
+  //3. TIMER  
+  function startTimer(){
+  function onGoingTimer(){
+    if (seconds > 19){
+      seconds = 0;
+      printQuestion();
+    } else {
+      seconds += 1;
+    timer.innerHTML = seconds;
+    }
+
+  };
+  setInterval(onGoingTimer,1000);
+};
+  //SCOREBOARD
+ 
 
   function recalculateCorrectScore(points, time){
     if (time <= 2){
