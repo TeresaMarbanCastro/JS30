@@ -38,6 +38,16 @@ body{
     font-family: 'Gaegu', cursive;
     font-size: 1.5em;
 }
+.start__button{
+    width: 80px;
+    height: 30px;
+    align-self: center;
+    background-color: lightgrey;
+    box-shadow: none;
+    border: dotted 2px grey;
+    border-radius: 20%;
+    padding-left: none;
+}
 .check__button{
     width: 80px;
     height: 30px;
@@ -50,4 +60,7 @@ body{
 }
 .footer__container{
     height: 10vh;
+}
+.hide{
+    display: none;
 }

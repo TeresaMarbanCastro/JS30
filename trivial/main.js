@@ -35,6 +35,7 @@ const fullQuestionData = [
 
 
 let buttonQuestion = document.querySelector('.check__button');
+let buttonStart = document.querySelector('.start__button');
 
 //1. PRINT QUESTION and ANSWERS and CHECK USER SELECTION WITH QUESTION ID
 
@@ -61,19 +62,20 @@ let buttonQuestion = document.querySelector('.check__button');
     function checkAnswer(){
       let options = document.querySelectorAll('.input__class');
       let questionTitleID =  document.querySelector('.question__class').id;
-      var found = fullQuestionData.find(function(i) {
-        if (question.id == i) {
-           return correctAnswer;
-        }
-      });
-      console.log(questionTitleID);
+      // var found = fullQuestionData.find(function(i) {
+      //   if (question.id == i) {
+      //      return correctAnswer;
+      //   }
+      // });
       for (let i = 0; i < options.length; i++){
         if (options[i].checked){
           let selectedAnswerID = options[i].id;
-          console.log(selectedAnswerID);
           if(selectedAnswerID === questionTitleID){
-            console.log('bien');
-          }else console.log('mal');
+            alert('Acertaste');
+
+          }else {
+            alert('Fallaste')
+          }
         }
   
       }
@@ -81,9 +83,28 @@ let buttonQuestion = document.querySelector('.check__button');
 
     buttonQuestion.addEventListener('click', checkAnswer);
     buttonQuestion.addEventListener('click', printQuestion);
-})();
+
+
+
     
   //SCOREBOARD
+  buttonStart.addEventListener('click', startScoreboard);
+
+    let placeData = document.querySelector('.scoreboard__data');
+
+    placeData.innerHTML = 'Aquí se registrarán tus resultados';
+
+  function startScoreboard(){
+    placeData.innerHTML = 'Teresa' + '' + 0;
+    printQuestion();
+    hideStart();
+  };
+
+  function  hideStart(){
+    buttonStart.classList.add('hide');
+    buttonQuestion.classList.remove('hide');
+  };
+
   function recalculateCorrectScore(points, time){
     if (time <= 2){
       return points + 2;
@@ -103,4 +124,4 @@ let buttonQuestion = document.querySelector('.check__button');
   function recalculateBlankScore(points){
       return points -3;
   };
-  
+})();
