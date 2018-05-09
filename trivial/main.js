@@ -1,3 +1,4 @@
+(function(){
 'use strict'
 const fullQuestionData = [
     {
@@ -33,20 +34,17 @@ const fullQuestionData = [
     }
   ];
 
-
-let buttonQuestion = document.querySelector('.check__button');
-let buttonStart = document.querySelector('.start__button');
-let placeData = document.querySelector('.scoreboard__data');
-let placeQuestion = document.querySelector('.question-answer__container');
-let timer = document.querySelector('.seconds');
-let seconds = 0;
-let points = 0;
-
-
-//1. START FUNCTIONS
-(function(){
+  let buttonQuestion = document.querySelector('.check__button');
+  let buttonStart = document.querySelector('.start__button');
+  let placeData = document.querySelector('.scoreboard__data');
+  let placeQuestion = document.querySelector('.question-answer__container');
+  let timer = document.querySelector('.seconds');
+  let seconds = 0;
+  let points = 0;
+  placeQuestion.innerHTML = `Pulsa el botón para comenzar`;
   placeData.innerHTML = 'Aquí se registrarán tus resultados';
 
+//1. START FUNCTIONS
   buttonStart.addEventListener('click', startScoreboard);
 
   function startScoreboard(){
@@ -64,7 +62,6 @@ let points = 0;
 //2. PRINT QUESTION and ANSWERS and CHECK USER SELECTION WITH QUESTION ID
  let i = 0;
 
-  placeQuestion.innerHTML = `Pulsa el botón para comenzar`;
 
   function printQuestion(){
     if(i < fullQuestionData.length){
@@ -94,45 +91,48 @@ let points = 0;
         if(selectedAnswerID === questionTitleID){
           alert('Acertaste');
           points += 1;
-          placeData.innerHTML = points;
+          placeData.innerHTML = 'Teresa' + ' ' + points;
         }else {
           alert('Fallaste');
           points -= 1;
-          placeData.innerHTML = points;
+          placeData.innerHTML = 'Teresa' + ' ' + points;
         }
+        seconds = 0;
       }
     }
   }
 
   buttonQuestion.addEventListener('click', checkAnswer);
   buttonQuestion.addEventListener('click', printQuestion);
+  // buttonQuestion.addEventListener('click', restartTimer);
+
 
   //3. TIMER  
   function startTimer(){
-  function onGoingTimer(){
-    if (seconds > 19){
-      seconds = 0;
-      printQuestion();
-    } else {
-      seconds += 1;
-    timer.innerHTML = seconds;
-    }
-
+    function onGoingTimer(){
+     if (seconds > 19){
+       seconds = 0;
+       printQuestion();
+       } else {
+       seconds += 1;
+      timer.innerHTML = seconds;
+     }
+    };
+   setInterval(onGoingTimer,1000);
   };
-  setInterval(onGoingTimer,1000);
-};
+
   //SCOREBOARD
  
-
-  function recalculateCorrectScore(points, time){
-    if (time <= 2){
+  function recalculateCorrectScore(points, seconds){
+    if (seconds <= 2){
       return points + 2;
-    } if (time > 2 && time <= 10){
+    } if (seconds > 2 && time <= 10){
       return points + 1;
-    } if (time > 10){
+    } if (seconds > 10){
       return points;
     } 
   };
+  recalculateCorrectScore();
   function recalculateFailedScore(points, time){
       if( time <= 10){
         return points - 1;
