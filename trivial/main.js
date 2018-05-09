@@ -112,7 +112,7 @@ const fullQuestionData = [
    setInterval(onGoingTimer,1000);
   };
 
-  //SCOREBOARD
+  //4. SCOREBOARD
  
   function recalculateCorrectScore(){
     if (seconds <= 2){
@@ -153,7 +153,11 @@ const fullQuestionData = [
 
 
 
-
+//Kill timer
+//Stats
+//Enable disable buttons
+//find
+//Interfaz
 
 
 
