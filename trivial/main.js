@@ -48,11 +48,12 @@ function application() {
   buttonStart.addEventListener('click', startScoreboard);
 
   function startScoreboard() {
-    // buttonQuestion.disabled = true;
+    buttonQuestion.disabled = true;
     placeData.innerHTML = 'Teresa' + ' ' + points;
     printQuestion();
     hideStartButton();
     startTimer();
+    checkEnableNextQuestionButton();
   };
 
   function hideStartButton() {
@@ -116,7 +117,18 @@ function application() {
   //   };
   //   setInterval(enableCheck,1000);
   // };
-
+function checkEnableNextQuestionButton(){
+  function enableNextQuestionButton(){
+    let options = document.querySelectorAll('.input__class');
+      if ((options[0].checked)||(options[1].checked)||(options[2].checked)) {
+        buttonQuestion.disabled = false;
+      }  
+      else {
+        buttonQuestion.disabled = true;
+      } 
+  }
+  setInterval(enableNextQuestionButton,1000)
+}
   //4. TIMER  
   function startTimer() {
     function onGoingTimer() {
