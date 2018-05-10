@@ -102,21 +102,6 @@ function application() {
 
   //3. ENABLE AND DISABLE BUTTONS SO THAT USER CANNOT SKIP QUESTIONS
 
-  // function enableGlobalCheck(){
-  //   function enableCheck(){
-  //     let options = document.querySelectorAll('.input__class');
-  //     let optionChecked = false;
-  //     for (let i = 0; i < options.length; i++){
-  //       if (options[i].checked){
-  //         optionChecked = true;
-  //       } 
-  //     }
-  //       if (optionChecked){
-  //         buttonQuestion.disabled = false;
-  //       }
-  //   };
-  //   setInterval(enableCheck,1000);
-  // };
 function checkEnableNextQuestionButton(){
   function enableNextQuestionButton(){
     let options = document.querySelectorAll('.input__class');
@@ -184,14 +169,13 @@ function checkEnableNextQuestionButton(){
   }
 
   return {
-    start: function(){}
+    start: function(){ }
   }
 
 };
 
 //Kill timer
 //Stats
-
 //find
 //Interfaz
 
