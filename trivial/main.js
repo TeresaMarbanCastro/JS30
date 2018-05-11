@@ -112,7 +112,7 @@ function checkEnableNextQuestionButton(){
         buttonQuestion.disabled = true;
       } 
   }
-  setInterval(enableNextQuestionButton,1000)
+  setInterval(enableNextQuestionButton,500)
 }
   //4. TIMER  
   function startTimer() {
