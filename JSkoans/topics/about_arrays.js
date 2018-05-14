@@ -8,7 +8,7 @@ test("array literal syntax and indexing", function() {
 });
 
 test("array type", function() {
-    equal(typeof[Object], typeof([]), 'what is the type of an array?');
+    equal('object', typeof([]), 'what is the type of an array?');
 });
 
 test("length", function() {
