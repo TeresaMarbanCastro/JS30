@@ -11,7 +11,7 @@ var prizeContainer = document.querySelector('.prize');
 function countCharacters(){
     textEntered = document.querySelector('.input__text').value;
     textLength = textEntered.length;
-    return textLength;
+    return textEntered, textLength;
 }
 
 function calculatePrize(){
@@ -26,7 +26,12 @@ buttonCalculate.addEventListener('click', showPrize);
 // }
 
 function printPrize(){
+    if (textEntered == ''){
+        console.log(textEntered);
+        prizeContainer.innerHTML = 'Please, enter a name'
+    }else{
     prizeContainer.innerHTML = `${finalPrize}€`;
+    }
 }
 function showPrize(){
     countCharacters();
