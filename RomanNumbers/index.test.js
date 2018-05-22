@@ -1,9 +1,12 @@
-const application = require('./main');
+const intToRoman = require('./main.js');
 
-​describe('the application', function(){
+describe('Roman Number conversor', function(){
 
-    test('adds 1 + 2 to equal 3', () => {
-        expect(application(1, 2)).toBe(3);
+    it('must return roman number', function(){
+        expect(intToRoman.fromNumber(1)).toBe('I');
+        expect(intToRoman.fromNumber(2)).toBe('II');
+        expect(intToRoman.fromNumber(3)).toBe('III');
+        expect(intToRoman.fromNumber(4)).toBe('IV');
     });
-    
 });
+
