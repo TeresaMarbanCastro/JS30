@@ -1,0 +1,11 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "Calculator created with TDD",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Teresa",
+  "license": "ISC"
+}
