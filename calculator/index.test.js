@@ -15,4 +15,8 @@ describe('the calculator', function(){
         expect(app.add(5,'-', 8)).toBe(-3);
         expect(app.add(58,'-', 8)).toBe(50);
     });
+
+    it('should display numbers when clicked', function(){
+        
+    })
 });
