@@ -4,13 +4,23 @@ body{
     font-family: 'Comfortaa', cursive;
     font-size: 26px;
 }
+h1{
+    color: black;
+    font-family: 'Black Han Sans', sans-serif;
+    text-align: center;
+    font-weight: lighter;
+}
+.title__it{
+    color: white;
+    text-transform: uppercase;
+}
 .main__section{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 100px;
 }
 .calculator__container{
+    background-color: #b1bdd1;
     padding: 20px;
     width: 500px;
     height: 500px;
@@ -32,7 +42,7 @@ body{
 .equal{
     grid-column: 3 / 5;
     font-size: 80px;
-    background-color: #0b2856;
+    background-color: #e58602;
 }
 .buttons{
     display: flex;
