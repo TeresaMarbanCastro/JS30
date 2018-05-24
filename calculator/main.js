@@ -1,16 +1,19 @@
 function application(){
     'use strict'
     var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-    var sum;
     var result;
 
-    function add(a, b){
+    function add(a, x, b){
         for(var i = 0; i < numbers.length; i++){
             a = numbers[a];
             b = numbers[b];
-            sum = a + b;
+            if(x === '+'){
+               result = a + b;
+            }
+            if(x === '-'){
+                result = a - b;
+            }
         }
-        result = sum;
         return result;
     }
 
