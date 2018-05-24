@@ -8,7 +8,6 @@ describe('the calculator', function(){
         expect(app.add(9,'+', 0)).toBe(9);
         expect(app.add(90,'+', 8)).toBe(98);
         expect(app.add(900,'+', 78)).toBe(978);
-
     });
 
     it('should subtract two numbers', function(){
