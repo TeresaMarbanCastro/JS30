@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <title>Random Name</title>
+</head>
+<body>
+    <form>
+        <input class="input__name" ref="name" type="text">
+        <button type="button" class="submit__button">Enviar</button>
+        <button type="button" class="create__button">Crear</button>
+
+    </form>
+    <div class="group one">Group 1</div>
+    <div class="group two">Group 2</div>
+    <div class="group three">Group 3</div>
+    <div class="group four">Group 4</div>
+    <div class="group five">Group 5</div>
+
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    <script>
+     // Initialize Firebase
+     var config = {
+       apiKey: "AIzaSyBuHode-q2gX-57fdLmgiW4f61vJc-es0Q",
+       authDomain: "randomnames-df400.firebaseapp.com",
+       databaseURL: "https://randomnames-df400.firebaseio.com",
+       projectId: "randomnames-df400",
+       storageBucket: "randomnames-df400.appspot.com",
+       messagingSenderId: "783941097016"
+     };
+     firebase.initializeApp(config);
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>
